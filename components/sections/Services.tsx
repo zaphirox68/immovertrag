@@ -1,67 +1,76 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { FileText, MessageSquare, Landmark, FolderOpen, Euro, FileCheck } from "lucide-react";
+import { FileSearch, TrendingUp, Handshake, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const services = [
   {
-    icon: FileText,
-    title: "Vertragserstellung",
-    description: "Rechtssichere Erstellung des Kaufvertrags nach aktuellem österreichischem Recht."
+    icon: FileSearch,
+    title: "Betriebskosten\u00ADabrechnungs\u00ADanalyse",
+    shortText:
+      "Strukturierte Prüfung von Betriebskostenabrechnungen auf Vertragskonformität, Umlagefähigkeit, Verteilungsschlüssel sowie Nachvollziehbarkeit und rechnerische Korrektheit – inklusive Unterstützung bei der sachlichen Klärung zwischen Mieter, Vermieter und Hausverwaltung.",
+    href: "/leistungen/betriebskostenanalyse",
   },
   {
-    icon: MessageSquare,
-    title: "Vertragserklärung",
-    description: "Ausführliche Erläuterung aller Vertragsklauseln und rechtlichen Konsequenzen."
+    icon: TrendingUp,
+    title: "Wertsicherungs\u00ADüberprüfung",
+    shortText:
+      "Überprüfung, ob vertraglich vereinbarte Wertsicherungsregelungen historisch und aktuell korrekt angewendet wurden (Index, Stichtage, Intervalle, Berechnungslogik) – als Grundlage für die Kalkulation von Aufwand bzw. Ertrag; bei Privatpersonen zusätzlich unter Berücksichtigung gesetzlicher Vorgaben.",
+    href: "/leistungen/wertsicherung",
   },
   {
-    icon: Landmark,
-    title: "Treuhandschaft",
-    description: "Sichere Abwicklung über das anwaltliche Treuhandbuch der Rechtsanwaltskammer."
+    icon: Handshake,
+    title: "Mediation",
+    shortText:
+      "Neutrale Moderation zur Deeskalation und Entwicklung tragfähiger Lösungen – mit Fokus auf ein stabiles, wirtschaftlich sinnvolles Mietverhältnis, sowohl im laufenden Bestandsverhältnis als auch im Vermarktungsprozess.",
+    href: "/leistungen/mediation",
   },
-  {
-    icon: FolderOpen,
-    title: "Grundbuch",
-    description: "Professionelle Begleitung aller Grundbucheintragungen und Löschungen."
-  },
-  {
-    icon: Euro,
-    title: "Finanzierung",
-    description: "Koordination mit Ihrer finanzierenden Bank und Abwicklung der Pfandrechte."
-  },
-  {
-    icon: FileCheck,
-    title: "Steuermeldung",
-    description: "Fristgerechte Berechnung und Meldung der Grunderwerbsteuer und Gebühren."
-  }
 ];
 
 export const Services = () => {
   return (
-    <section id="leistungen" className="relative bg-cover bg-center bg-no-repeat bg-[url('/backgroundlight.png')] py-24">
-      <div className="absolute inset-0 bg-white/30"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-white/20"></div>
-      
+    <section
+      id="leistungen"
+      className="relative bg-cover bg-center bg-no-repeat bg-[url('/backgroundlight.png')] py-28 md:py-36"
+    >
+      <div className="absolute inset-0 bg-white/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50" />
+
       <div className="container relative z-10 mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-navy-900">Leistungsübersicht</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Umfassender Service von der Vertragserstellung bis zur Eigentumsübertragung.
-            Alles in der Pauschale enthalten.
+        <div className="text-center mb-16 md:mb-20">
+          <p className="text-gold-600 uppercase tracking-[0.2em] text-xs font-medium mb-4">
+            Unsere Leistungen
           </p>
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-light text-navy-900 tracking-wide">
+            Leistungsübersicht
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {services.map((service, index) => (
-            <Card key={index} className="glass-card border-white/40 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 bg-white/60 backdrop-blur-md">
-              <CardContent className="pt-8 pb-8 px-8">
-                <div className="w-14 h-14 rounded-2xl bg-navy-900 text-gold flex items-center justify-center mb-6 shadow-lg shadow-navy-900/20">
-                  <service.icon className="h-7 w-7" strokeWidth={1.5} />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+          {services.map((service) => (
+            <Link
+              key={service.title}
+              href={service.href}
+              className="group relative bg-white/80 backdrop-blur-md border border-navy-900/8 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_60px_-12px_rgba(25,37,55,0.15)] hover:border-gold/30"
+            >
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-b from-gold/[0.03] to-transparent" />
+
+              <div className="relative p-8 pt-10 pb-8">
+                <div className="w-14 h-14 rounded-2xl bg-navy-900 text-gold flex items-center justify-center mb-7 shadow-lg shadow-navy-900/10 group-hover:shadow-gold/10 transition-shadow duration-500">
+                  <service.icon className="h-6 w-6" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-bold text-xl mb-3 text-navy-900">{service.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {service.description}
+                <h3 className="font-heading text-2xl font-medium mb-4 text-navy-900 leading-tight">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed text-sm mb-6">
+                  {service.shortText}
                 </p>
-              </CardContent>
-            </Card>
+                <span className="inline-flex items-center gap-2 text-sm text-navy-900 font-medium group-hover:text-gold transition-colors duration-300">
+                  Mehr erfahren
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform duration-300" />
+                </span>
+              </div>
+
+              <div className="h-0.5 bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/40 transition-all duration-500" />
+            </Link>
           ))}
         </div>
       </div>

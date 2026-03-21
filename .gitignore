@@ -38,3 +38,6 @@ next-env.d.ts
 .vscode
 .idea
 *.swp
+
+# Source files (design assets, not for production)
+sourcefiles

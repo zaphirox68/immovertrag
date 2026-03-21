@@ -1,17 +1,27 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-
-// We use Inter as a fallback/primary font. 
-// Ideally, we would load 'Satoshi' locally here if we had the file.
-// For now, we rely on the class 'font-heading' mapping to it.
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-cormorant",
+});
 
 export const metadata: Metadata = {
-  title: "Immobilienkaufvertrag Österreich | Rechtssicher & Fixpreis",
-  description: "Ihr Immobilienkaufvertrag – transparent, fix und ohne Überraschungen. Kanzlei für Immobilienrecht.",
+  title: "REJAS | Betriebskosten, Wertsicherung & Mediation",
+  description:
+    "REJAS Immobilien & Management Holding GmbH – Spezialisierte Leistungen für Betriebskostenabrechnungsanalyse, Wertsicherungsüberprüfung und Mediation zwischen Mieter, Vermieter und Hausverwaltung.",
+  openGraph: {
+    title: "REJAS | Betriebskosten, Wertsicherung & Mediation",
+    description:
+      "Fokussierte Leistungen an der Schnittstelle von Kosten, Verträgen und Kommunikation.",
+    locale: "de_AT",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -20,11 +30,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className="scroll-smooth">
-      <body className={cn(inter.variable, "min-h-screen bg-neutral-light font-sans")}>
+    <html lang="de">
+      <body
+        className={cn(
+          inter.variable,
+          cormorant.variable,
+          "min-h-screen bg-white font-sans"
+        )}
+      >
         {children}
       </body>
     </html>
   );
 }
-

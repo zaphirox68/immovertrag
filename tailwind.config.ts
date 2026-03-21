@@ -23,18 +23,20 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         
-        // Design System: Navy & Gold
         navy: {
-          DEFAULT: "#0A1428",
-          900: "#0A1428",
-          800: "#0F1A2E",
-          700: "#1a2b42",
+          DEFAULT: "#192537",
+          900: "#192537",
+          800: "#1e2d42",
+          700: "#24354d",
+          600: "#2d4160",
+          50: "#f0f3f7",
         },
         gold: {
-          DEFAULT: "#D4B47A",
-          500: "#D4B47A",
+          DEFAULT: "#C9B07A",
+          500: "#C9B07A",
           600: "#b89a66",
-          100: "#fcf8ed",
+          400: "#d4c094",
+          100: "#f8f3ea",
         },
 
         primary: {
@@ -66,11 +68,15 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      fontFamily: {
+        heading: ["var(--font-cormorant)", "Georgia", "serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-        "2xl": "1.5rem", // Premium roundness
+        "2xl": "1.5rem",
         "3xl": "2rem",
       },
       keyframes: {
@@ -86,6 +92,10 @@ const config: Config = {
           from: { opacity: "0", transform: "translateY(10px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        "fade-in-up": {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
         "shimmer": {
           from: { backgroundPosition: "200% 0" },
           to: { backgroundPosition: "-200% 0" }
@@ -95,15 +105,15 @@ const config: Config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.6s ease-out forwards",
+        "fade-in-up": "fade-in-up 0.8s ease-out forwards",
         "shimmer": "shimmer 8s ease-in-out infinite",
       },
       backgroundImage: {
-        "gold-gradient": "linear-gradient(to right, #D4B47A, #F5E0B7, #D4B47A)",
-        "navy-gradient": "linear-gradient(to bottom, #0A1428, #0F1A2E)",
+        "gold-gradient": "linear-gradient(to right, #C9B07A, #e8d5a8, #C9B07A)",
+        "navy-gradient": "linear-gradient(to bottom, #192537, #1e2d42)",
       }
     },
   },
   plugins: [require("tailwindcss-animate")],
 };
 export default config;
-
