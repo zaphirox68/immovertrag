@@ -1,5 +1,8 @@
+"use client"
+
 import { FileSearch, TrendingUp, Handshake, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { BlueprintReveal } from "@/components/BlueprintGlow";
 
 const services = [
   {
@@ -31,11 +34,14 @@ export const Services = () => {
       id="leistungen"
       className="relative bg-cover bg-center bg-no-repeat bg-[url('/backgroundlight.png')] py-28 md:py-36"
     >
-      <div className="absolute inset-0 bg-white/40" />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50" />
+      <BlueprintReveal
+        gradient="linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.4) 30%, rgba(255,255,255,0.4) 70%, rgba(255,255,255,0.7) 100%)"
+        radius={300}
+        revealStrength={0}
+      />
 
       <div className="container relative z-10 mx-auto px-4">
-        <div className="text-center mb-16 md:mb-20">
+        <div className="text-center mb-16 md:mb-20 -mt-5">
           <p className="text-gold-600 uppercase tracking-[0.2em] text-xs font-medium mb-4">
             Unsere Leistungen
           </p>

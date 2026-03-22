@@ -1,4 +1,4 @@
-import { NavbarWithProvider } from "@/components/layout/NavbarWithProvider";
+import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -11,10 +11,15 @@ export const metadata: Metadata = {
 export default function ImpressumPage() {
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
-      <NavbarWithProvider />
+      <Navbar />
 
       <section className="relative bg-cover bg-center bg-no-repeat bg-[url('/backgrounddark.png')] pt-32 pb-20">
-        <div className="absolute inset-0 bg-navy-900/88" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to right, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.55) 30%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.30) 100%)",
+          }}
+        />
         <div className="absolute inset-0 bg-noise opacity-20" />
         <div className="container relative z-10 mx-auto px-4">
           <Link
@@ -30,17 +35,18 @@ export default function ImpressumPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto space-y-8">
+      <section className="relative py-16 md:py-24 bg-cover bg-center bg-no-repeat bg-[url('/backgroundlight.png')]">
+        <div className="absolute inset-0 bg-white/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50" />
+        <div className="container relative z-10 mx-auto px-4">
+          <div className="max-w-3xl mx-auto space-y-10">
+
             <div>
               <h2 className="font-heading text-2xl text-navy-900 mb-4">
-                Angaben gemäß § 5 ECG
+                Medieninhaber & Herausgeber
               </h2>
-              <div className="space-y-1 text-muted-foreground leading-relaxed">
-                <p className="text-navy-900 font-medium">
-                  REJAS Immobilien & Management Holding GmbH
-                </p>
+              <div className="space-y-1 text-navy-700 leading-relaxed">
+                <p className="text-navy-900 font-medium">Jakob Scherzenlehner</p>
                 <p>Ernst-Melchior-Gasse 11/3/30</p>
                 <p>1020 Wien</p>
                 <p>Österreich</p>
@@ -49,49 +55,114 @@ export default function ImpressumPage() {
 
             <div>
               <h2 className="font-heading text-2xl text-navy-900 mb-4">
-                Unternehmensregister
+                Kontakt
               </h2>
-              <div className="space-y-1 text-muted-foreground">
-                <p>FN: 647434i</p>
-                <p>Firmenbuchgericht: Handelsgericht Wien</p>
-                <p>UID-Nr.: ATU81929102</p>
+              <div className="space-y-1 text-navy-700 leading-relaxed">
+                <p>
+                  Telefon:{" "}
+                  <a href="tel:+436647870648" className="text-navy-900 hover:text-gold transition-colors">
+                    +43 664 787 06 48
+                  </a>
+                </p>
+                <p>
+                  E-Mail:{" "}
+                  <a href="mailto:jakob.scherzenlehner@rejas.at" className="text-navy-900 hover:text-gold transition-colors">
+                    jakob.scherzenlehner@rejas.at
+                  </a>
+                </p>
+                <p>
+                  Website:{" "}
+                  <a href="https://www.rejas.at" className="text-navy-900 hover:text-gold transition-colors">
+                    www.rejas.at
+                  </a>
+                </p>
               </div>
             </div>
 
             <div>
               <h2 className="font-heading text-2xl text-navy-900 mb-4">
-                Vertretungsbefugt
+                Unternehmensgegenstand
               </h2>
-              <p className="text-muted-foreground">
-                Geschäftsführer: Jakob Scherzenlehner
+              <p className="text-navy-700 leading-relaxed">
+                Immobilienwirtschaftliche Beratung, insbesondere die Analyse von
+                Betriebskostenabrechnungen und Wertsicherungsprüfungen sowie
+                Mediation.
               </p>
             </div>
 
             <div>
               <h2 className="font-heading text-2xl text-navy-900 mb-4">
-                Kontakt
+                Unternehmensregister
               </h2>
-              <div className="space-y-1 text-muted-foreground">
-                <p>
-                  E-Mail:{" "}
-                  <a
-                    href="mailto:jakob.scherzenlehner@rejas.at"
-                    className="text-navy-900 hover:text-gold transition-colors"
-                  >
-                    jakob.scherzenlehner@rejas.at
-                  </a>
+              <div className="space-y-1 text-navy-700 leading-relaxed">
+                <p className="text-navy-900 font-medium">
+                  REJAS Immobilien & Management Holding GmbH
                 </p>
-                <p>
-                  Telefon:{" "}
-                  <a
-                    href="tel:+436647870648"
-                    className="text-navy-900 hover:text-gold transition-colors"
-                  >
-                    +43 664 787 06 48
-                  </a>
-                </p>
+                <p>FN: 647434i</p>
+                <p>Firmenbuchgericht: Handelsgericht Wien</p>
               </div>
             </div>
+
+            <div>
+              <h2 className="font-heading text-2xl text-navy-900 mb-4">
+                Gewerbe- und berufsrechtliche Vorschriften
+              </h2>
+              <div className="space-y-1 text-navy-700 leading-relaxed">
+                <p>Berufsbezeichnung: [z.&nbsp;B. Immobilientreuhänder / Unternehmensberater]</p>
+                <p>Verleihungsstaat: Österreich</p>
+                <p>GISA-Zahl: [GISA-Nummer]</p>
+                <p>Aufsichtsbehörde: Magistratisches Bezirksamt des [Nummer] Bezirks</p>
+                <p>Kammerzugehörigkeit: Mitglied der Wirtschaftskammer [Bundesland], Fachgruppe Immobilien- und Vermögenstreuhänder</p>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="font-heading text-2xl text-navy-900 mb-4">
+                Anwendbare Rechtsvorschriften
+              </h2>
+              <p className="text-navy-700 leading-relaxed">
+                Gewerbeordnung (GewO) sowie E-Commerce-Gesetz (ECG). Einsehbar
+                unter:{" "}
+                <a
+                  href="https://www.ris.bka.gv.at"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-navy-900 hover:text-gold transition-colors"
+                >
+                  www.ris.bka.gv.at
+                </a>
+              </p>
+            </div>
+
+            <div>
+              <h2 className="font-heading text-2xl text-navy-900 mb-4">
+                Hinweis auf Umsatzsteuer
+              </h2>
+              <p className="text-navy-700 leading-relaxed">
+                Umsatzsteuer-Identifikationsnummer: ATU81929102
+              </p>
+            </div>
+
+            <div>
+              <h2 className="font-heading text-2xl text-navy-900 mb-4">
+                Online-Streitbeilegung
+              </h2>
+              <p className="text-navy-700 leading-relaxed">
+                Verbraucher haben die Möglichkeit, Beschwerden an die
+                Online-Streitbeilegungsplattform der EU zu richten:{" "}
+                <a
+                  href="https://ec.europa.eu/odr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-navy-900 hover:text-gold transition-colors"
+                >
+                  https://ec.europa.eu/odr
+                </a>
+                . Sie können allfällige Beschwerden auch an die oben angegebene
+                E-Mail-Adresse richten.
+              </p>
+            </div>
+
           </div>
         </div>
       </section>

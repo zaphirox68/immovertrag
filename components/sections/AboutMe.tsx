@@ -1,9 +1,16 @@
+"use client"
+
 import Image from "next/image";
+import { BlueprintReveal } from "@/components/BlueprintGlow";
 
 export const AboutMe = () => {
   return (
     <section id="ueber-mich" className="relative py-28 md:py-36 bg-cover bg-center bg-no-repeat bg-[url('/backgroundlight.png')]">
-      <div className="absolute inset-0 bg-gradient-to-r from-navy-50/20 via-navy-50/90 via-50% to-navy-50" />
+      <BlueprintReveal
+        gradient="linear-gradient(to right, rgba(249,247,244,0.2) 0%, rgba(249,247,244,0.9) 50%, rgba(249,247,244,1) 100%)"
+        radius={300}
+        revealStrength={0}
+      />
       <div className="container relative z-10 mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 md:mb-20">

@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/sections/Footer";
-import { HeroModeProvider } from "@/components/HeroModeContext";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ReactNode } from "react";
+import { BlueprintReveal } from "@/components/BlueprintGlow";
 
 interface ServicePageLayoutProps {
   title: string;
@@ -21,13 +21,17 @@ export function ServicePageLayout({
   nextService,
 }: ServicePageLayoutProps) {
   return (
-    <HeroModeProvider>
     <main className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
 
-      {/* Header -- dark with blueprint */}
+      {/* Header -- dark with blueprint, stronger at edges */}
       <section className="relative bg-cover bg-center bg-no-repeat bg-[url('/backgrounddark.png')] pt-32 pb-20">
-        <div className="absolute inset-0 bg-black/55 bg-gradient-to-b from-black/55 via-black/40 to-black/55" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to right, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.55) 30%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.30) 100%)",
+          }}
+        />
         <div className="absolute inset-0 bg-noise opacity-20" />
         <div className="container relative z-10 mx-auto px-4">
           <Link
@@ -43,10 +47,21 @@ export function ServicePageLayout({
         </div>
       </section>
 
-      {/* Content -- light with blueprint background for CI consistency */}
-      <section className="relative bg-cover bg-center bg-no-repeat bg-[url('/backgroundlight.png')] py-16 md:py-24">
-        <div className="absolute inset-0 bg-white/60" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/60 to-white/40" />
+      {/* Content -- light with blueprint, same as Leistungsübersicht but 20% more visible */}
+      <section className="relative py-16 md:py-24 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/backgroundlight.png')",
+            backgroundRepeat: "repeat-x",
+            transform: "translateX(-7%)",
+          }}
+        />
+        <BlueprintReveal
+          gradient="linear-gradient(to right, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.65) 20%, rgba(255,255,255,0.92) 35%, rgba(255,255,255,0.92) 65%, rgba(255,255,255,0.65) 80%, rgba(255,255,255,0.3) 100%)"
+          radius={300}
+          revealStrength={0}
+        />
         <div className="container relative z-10 mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             {children}
@@ -84,9 +99,14 @@ export function ServicePageLayout({
         </div>
       </section>
 
-      {/* Interesse CTA -- dark with blueprint, matching hero/contact style */}
+      {/* Interesse CTA -- dark with blueprint, stronger at edges */}
       <section className="relative bg-cover bg-center bg-no-repeat bg-[url('/backgrounddark.png')] py-20">
-        <div className="absolute inset-0 bg-black/55 bg-gradient-to-b from-black/55 via-black/40 to-black/55" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to right, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.55) 30%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.30) 100%)",
+          }}
+        />
         <div className="absolute inset-0 bg-noise opacity-20" />
         <div className="container relative z-10 mx-auto px-4 text-center">
           <h2 className="font-heading text-2xl md:text-3xl text-white mb-4 tracking-wide">
@@ -97,7 +117,7 @@ export function ServicePageLayout({
           </p>
           <Link
             href="/#kontakt"
-            className="group inline-flex items-center gap-2 bg-gold text-navy-900 hover:bg-white hover:text-navy-900 px-8 py-3.5 rounded-xl font-medium transition-all duration-500 tracking-wide shadow-[0_0_20px_rgba(201,176,122,0.25)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+            className="group inline-flex items-center gap-2 bg-gold text-navy-900 hover:bg-[#f5f0e8] hover:text-navy-900 px-8 py-3.5 rounded-xl font-medium transition-all duration-500 tracking-wide shadow-[0_0_20px_rgba(201,176,122,0.25)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
           >
             Kontakt aufnehmen
             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -107,6 +127,5 @@ export function ServicePageLayout({
 
       <Footer />
     </main>
-    </HeroModeProvider>
   );
 }

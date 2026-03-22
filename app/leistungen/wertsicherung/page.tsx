@@ -20,7 +20,7 @@ export default function WertsicherungPage() {
         label: "Mediation",
       }}
     >
-      <p className="text-lg text-navy-800 leading-relaxed font-light mb-10">
+      <p className="text-navy-700 leading-relaxed mb-10">
         Wertsicherung wirkt unmittelbar auf Ertrag sowie Aufwand und ist
         gleichzeitig ein klassischer Fehlerpunkt in der Praxis. Eine
         Wertsicherungsüberprüfung schafft belastbare Klarheit.
@@ -29,7 +29,7 @@ export default function WertsicherungPage() {
       <h2 className="font-heading text-2xl text-navy-900 mt-14 mb-5">
         Was wird geprüft?
       </h2>
-      <p className="text-navy-700 leading-relaxed mb-8">
+      <p className="text-navy-700 leading-relaxed mb-10">
         Wurden die vertraglich vereinbarten Regeln korrekt übernommen und in der
         Historie sowie aktuell richtig angewendet? Stimmen Indexbezug,
         Stichtage, Bezugszeiträume, Schwellen/Staffeln, Intervalle und die
@@ -78,7 +78,7 @@ export default function WertsicherungPage() {
       </ul>
 
       <div className="mt-14 w-12 h-px bg-gold" />
-      <p className="mt-6 text-navy-800 leading-relaxed">
+      <p className="mt-6 text-navy-700 leading-relaxed">
         Bei Privatpersonen bzw. im wohnrechtlichen Kontext fließen zusätzlich
         die aktuellen gesetzlichen Rahmenbedingungen in die Beurteilung ein.
         Ergebnis ist eine klare Grundlage für Kalkulation, Entscheidung und

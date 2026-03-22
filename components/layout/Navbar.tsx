@@ -3,19 +3,13 @@
 import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { Menu, Phone, X, Sun, Moon } from "lucide-react"
-import { useHeroMode } from "@/components/HeroModeContext"
+import { Menu, Phone, X } from "lucide-react"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [mobileOpen, setMobileOpen] = React.useState(false)
-  const { mode, toggle } = useHeroMode()
-  const pathname = usePathname()
-
-  const isLightTop = mode === "light" && !isScrolled && pathname === "/"
 
   React.useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20)
@@ -43,14 +37,14 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
         isScrolled
-          ? "bg-navy-900/75 backdrop-blur-md border-b border-white/10 py-3 shadow-lg"
+          ? "bg-navy-900/60 backdrop-blur-xl border-b border-white/10 py-3 shadow-lg"
           : "bg-transparent py-5"
       )}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center group relative z-10">
           <Image
-            src={isLightTop ? "/rejas-logo-dark.png" : "/rejas-logo-white.png"}
+            src="/rejas-logo-white.png"
             alt="REJAS Immobilien & Management Holding GmbH"
             width={160}
             height={44}
@@ -65,42 +59,12 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={cn(
-                "hover:text-gold transition-colors duration-300 relative group uppercase text-xs tracking-[0.15em]",
-                isLightTop ? "text-navy-900/70" : "text-gray-300"
-              )}
+              className="text-gray-300 hover:text-gold transition-colors duration-300 relative group uppercase text-xs tracking-[0.15em]"
             >
               {link.label}
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
-
-          {/* Light/Dark hero toggle */}
-          <button
-            onClick={toggle}
-            className={cn(
-              "relative w-14 h-7 rounded-full border backdrop-blur-sm flex items-center transition-all duration-500 hover:border-gold/40 group",
-              isLightTop
-                ? "border-navy-900/15 bg-navy-900/5"
-                : "border-white/15 bg-white/5"
-            )}
-            aria-label={mode === "dark" ? "Switch to light hero" : "Switch to dark hero"}
-          >
-            <div
-              className={cn(
-                "absolute w-5 h-5 rounded-full flex items-center justify-center transition-all duration-500 shadow-sm",
-                mode === "dark"
-                  ? "left-1 bg-navy-800"
-                  : "left-[calc(100%-1.5rem)] bg-gold"
-              )}
-            >
-              {mode === "dark" ? (
-                <Moon className="h-3 w-3 text-gold" strokeWidth={2} />
-              ) : (
-                <Sun className="h-3 w-3 text-navy-900" strokeWidth={2} />
-              )}
-            </div>
-          </button>
 
           <Button
             asChild
@@ -109,9 +73,7 @@ export function Navbar() {
               "transition-all duration-300 rounded-full px-5 text-xs tracking-wider",
               isScrolled
                 ? "bg-gold text-navy-900 hover:bg-gold-400"
-                : isLightTop
-                  ? "border border-navy-900/20 text-navy-900/70 hover:bg-navy-900/5 bg-navy-900/5 backdrop-blur-sm"
-                  : "border border-white/20 text-white hover:bg-white/10 bg-white/5 backdrop-blur-sm"
+                : "border border-white/20 text-white hover:bg-white/10 bg-white/5 backdrop-blur-sm"
             )}
           >
             <Link href="tel:+436647870648">
@@ -121,39 +83,10 @@ export function Navbar() {
           </Button>
         </nav>
 
-        {/* Mobile: toggle + hamburger */}
         <div className="md:hidden flex items-center gap-3 relative z-10">
           <button
-            onClick={toggle}
-            className={cn(
-              "relative w-12 h-6 rounded-full border backdrop-blur-sm flex items-center",
-              isLightTop
-                ? "border-navy-900/15 bg-navy-900/5"
-                : "border-white/15 bg-white/5"
-            )}
-            aria-label={mode === "dark" ? "Switch to light hero" : "Switch to dark hero"}
-          >
-            <div
-              className={cn(
-                "absolute w-4 h-4 rounded-full flex items-center justify-center transition-all duration-500 shadow-sm",
-                mode === "dark"
-                  ? "left-1 bg-navy-800"
-                  : "left-[calc(100%-1.25rem)] bg-gold"
-              )}
-            >
-              {mode === "dark" ? (
-                <Moon className="h-2.5 w-2.5 text-gold" strokeWidth={2} />
-              ) : (
-                <Sun className="h-2.5 w-2.5 text-navy-900" strokeWidth={2} />
-              )}
-            </div>
-          </button>
-          <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={cn(
-              "hover:text-gold transition-colors",
-              isLightTop ? "text-navy-900" : "text-white"
-            )}
+            className="text-white hover:text-gold transition-colors"
             aria-label={mobileOpen ? "Menü schließen" : "Menü öffnen"}
           >
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -161,7 +94,6 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div
         className={cn(
           "fixed inset-0 bg-navy-900/98 backdrop-blur-xl transition-all duration-500 md:hidden flex flex-col",

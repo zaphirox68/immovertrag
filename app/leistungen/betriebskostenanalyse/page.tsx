@@ -16,7 +16,7 @@ export default function BetriebskostenanalysePage() {
         label: "Wertsicherungsüberprüfung",
       }}
     >
-      <p className="text-lg text-navy-800 leading-relaxed font-light mb-10">
+      <p className="text-navy-700 leading-relaxed mb-10">
         Betriebskostenabrechnungen entscheiden oft darüber, ob ein
         Mietverhältnis transparent und konfliktfrei bleibt oder ob unnötige
         Reibung und Kosten entstehen. Eine strukturierte
@@ -73,7 +73,7 @@ export default function BetriebskostenanalysePage() {
       </ul>
 
       <div className="mt-14 w-12 h-px bg-gold" />
-      <p className="mt-6 text-navy-800 leading-relaxed">
+      <p className="mt-6 text-navy-700 leading-relaxed">
         Damit endet es nicht bei der Analyse: Die Ergebnisse werden so
         aufbereitet, dass Mieter, Vermieter und Hausverwaltung offene Punkte
         sachlich klären können – mit dem Ziel, Kosten zu verstehen, Streit zu

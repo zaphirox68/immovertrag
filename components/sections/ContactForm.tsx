@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Forminit } from "forminit"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -8,34 +9,46 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Send, CheckCircle, AlertCircle, Mail, Phone, MapPin } from "lucide-react"
 
+const FORM_ID = "d455st37oeg"
+
 export const ContactForm = () => {
   const [status, setStatus] = React.useState<"idle" | "sending" | "success" | "error">("idle")
+  const [errorMsg, setErrorMsg] = React.useState<string | null>(null)
   const [agreed, setAgreed] = React.useState(false)
+  const forminit = React.useMemo(() => new Forminit({ proxyUrl: "/api/forminit" }), [])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!agreed) return
 
     setStatus("sending")
+    setErrorMsg(null)
     const form = e.currentTarget
     const formData = new FormData(form)
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        body: formData,
-      })
+    const { data, error } = await forminit.submit(FORM_ID, {
+      blocks: [
+        {
+          type: "sender",
+          properties: {
+            fullName: formData.get("name") as string,
+            email: formData.get("email") as string,
+            ...(formData.get("phone") ? { phone: formData.get("phone") as string } : {}),
+          },
+        },
+        { type: "text", name: "message", value: formData.get("message") as string },
+      ],
+    })
 
-      if (res.ok) {
-        setStatus("success")
-        form.reset()
-        setAgreed(false)
-      } else {
-        setStatus("error")
-      }
-    } catch {
+    if (error) {
       setStatus("error")
+      setErrorMsg(error.message)
+      return
     }
+
+    setStatus("success")
+    form.reset()
+    setAgreed(false)
   }
 
   return (
@@ -168,21 +181,23 @@ export const ContactForm = () => {
                       className="mt-1 h-4 w-4 rounded border-gray-300 text-navy-900 focus:ring-navy-900"
                     />
                     <Label htmlFor="privacy" className="text-xs text-muted-foreground leading-normal font-normal cursor-pointer">
-                      Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu.
+                      Ich stimme der Verarbeitung meiner Daten gemäß der{" "}
+                      <a href="/datenschutz" className="underline hover:text-navy-900 transition-colors">Datenschutzerklärung</a>{" "}
+                      zu.
                     </Label>
                   </div>
 
                   {status === "error" && (
                     <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 rounded-xl p-3">
                       <AlertCircle className="h-4 w-4 flex-shrink-0" />
-                      Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.
+                      {errorMsg || "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."}
                     </div>
                   )}
 
                   <Button
                     type="submit"
                     disabled={!agreed || status === "sending"}
-                    className="w-full bg-navy-900 text-white hover:bg-navy-800 font-medium h-12 rounded-xl transition-all duration-300 disabled:opacity-40"
+                    className="w-full font-medium h-12 rounded-xl transition-all duration-500 disabled:opacity-40 disabled:bg-navy-900/50 disabled:text-white/60 bg-gold text-navy-900 hover:bg-gold-400 hover:shadow-[0_0_20px_rgba(212,180,122,0.3)]"
                   >
                     {status === "sending" ? (
                       "Wird gesendet..."
