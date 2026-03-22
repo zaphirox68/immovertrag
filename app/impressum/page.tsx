@@ -46,10 +46,23 @@ export default function ImpressumPage() {
                 Medieninhaber & Herausgeber
               </h2>
               <div className="space-y-1 text-navy-700 leading-relaxed">
-                <p className="text-navy-900 font-medium">Jakob Scherzenlehner</p>
+                <p className="text-navy-900 font-medium">
+                  REJAS Immobilien & Management Holding GmbH
+                </p>
                 <p>Ernst-Melchior-Gasse 11/3/30</p>
                 <p>1020 Wien</p>
                 <p>Österreich</p>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="font-heading text-2xl text-navy-900 mb-4">
+                Unternehmensregister
+              </h2>
+              <div className="space-y-1 text-navy-700 leading-relaxed">
+                <p>FN: 647434i</p>
+                <p>Firmenbuchgericht: Handelsgericht Wien</p>
+                <p>Geschäftsführer: Jakob Scherzenlehner</p>
               </div>
             </div>
 
@@ -59,21 +72,15 @@ export default function ImpressumPage() {
               </h2>
               <div className="space-y-1 text-navy-700 leading-relaxed">
                 <p>
-                  Telefon:{" "}
-                  <a href="tel:+436647870648" className="text-navy-900 hover:text-gold transition-colors">
-                    +43 664 787 06 48
-                  </a>
-                </p>
-                <p>
                   E-Mail:{" "}
                   <a href="mailto:jakob.scherzenlehner@rejas.at" className="text-navy-900 hover:text-gold transition-colors">
                     jakob.scherzenlehner@rejas.at
                   </a>
                 </p>
                 <p>
-                  Website:{" "}
-                  <a href="https://www.rejas.at" className="text-navy-900 hover:text-gold transition-colors">
-                    www.rejas.at
+                  Telefon:{" "}
+                  <a href="tel:+436647870648" className="text-navy-900 hover:text-gold transition-colors">
+                    +43 664 7870648
                   </a>
                 </p>
               </div>
@@ -84,7 +91,7 @@ export default function ImpressumPage() {
                 Unternehmensgegenstand
               </h2>
               <p className="text-navy-700 leading-relaxed">
-                Immobilienwirtschaftliche Beratung, insbesondere die Analyse von
+                Betriebswirtschaftliche Beratung, insbesondere die Analyse von
                 Betriebskostenabrechnungen und Wertsicherungsprüfungen sowie
                 Mediation.
               </p>
@@ -92,27 +99,14 @@ export default function ImpressumPage() {
 
             <div>
               <h2 className="font-heading text-2xl text-navy-900 mb-4">
-                Unternehmensregister
-              </h2>
-              <div className="space-y-1 text-navy-700 leading-relaxed">
-                <p className="text-navy-900 font-medium">
-                  REJAS Immobilien & Management Holding GmbH
-                </p>
-                <p>FN: 647434i</p>
-                <p>Firmenbuchgericht: Handelsgericht Wien</p>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="font-heading text-2xl text-navy-900 mb-4">
                 Gewerbe- und berufsrechtliche Vorschriften
               </h2>
               <div className="space-y-1 text-navy-700 leading-relaxed">
-                <p>Berufsbezeichnung: [z.&nbsp;B. Immobilientreuhänder / Unternehmensberater]</p>
+                <p>Berufsbezeichnung: Unternehmensberater einschließlich der Unternehmensorganisation</p>
                 <p>Verleihungsstaat: Österreich</p>
-                <p>GISA-Zahl: [GISA-Nummer]</p>
-                <p>Aufsichtsbehörde: Magistratisches Bezirksamt des [Nummer] Bezirks</p>
-                <p>Kammerzugehörigkeit: Mitglied der Wirtschaftskammer [Bundesland], Fachgruppe Immobilien- und Vermögenstreuhänder</p>
+                <p>GISA-Zahl: 38379802</p>
+                <p>Aufsichtsbehörde: Magistratisches Bezirksamt des 2/20 Bezirks</p>
+                <p>Kammerzugehörigkeit: Mitglied der Wirtschaftskammer Wien, Fachgruppe Unternehmensberatung, Buchhaltung und Informationstechnologie</p>
               </div>
             </div>
 
