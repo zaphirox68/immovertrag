@@ -60,10 +60,6 @@ export const Footer = () => {
                   +43 664 787 06 48
                 </a>
               </li>
-              <li className="pt-1">
-                Ernst-Melchior-Gasse 11/3/30
-                <br />1020 Wien
-              </li>
               <li className="pt-2">
                 <Link href="/impressum" className="hover:text-gold transition-colors duration-300">
                   Impressum
