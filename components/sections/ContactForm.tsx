@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
-import { Send, CheckCircle, AlertCircle, Mail, Phone, MapPin } from "lucide-react"
+import { Send, CheckCircle, AlertCircle, Mail, Phone } from "lucide-react"
 
 const FORM_ID = "j4tq67i8iys"
 
@@ -80,7 +80,6 @@ export const ContactForm = () => {
               {[
                 { icon: Mail, label: "E-Mail", value: "jakob.scherzenlehner@rejas.at", href: "mailto:jakob.scherzenlehner@rejas.at" },
                 { icon: Phone, label: "Telefon", value: "+43 664 787 06 48", href: "tel:+436647870648" },
-                { icon: MapPin, label: "Adresse", value: "Ernst-Melchior-Gasse 11/3/30\n1020 Wien", href: null },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">

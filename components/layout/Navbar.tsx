@@ -85,47 +85,54 @@ export function Navbar() {
 
         <div className="md:hidden flex items-center gap-3 relative z-10">
           <button
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={() => setMobileOpen(true)}
             className="text-white hover:text-gold transition-colors"
-            aria-label={mobileOpen ? "Menü schließen" : "Menü öffnen"}
+            aria-label="Menü öffnen"
           >
-            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            <Menu className="h-6 w-6" />
           </button>
         </div>
       </div>
 
-      <div
-        className={cn(
-          "fixed inset-0 bg-navy-900/98 backdrop-blur-xl transition-all duration-500 md:hidden flex flex-col",
-          mobileOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        )}
-      >
-        <div className="flex flex-col items-center justify-center flex-1 gap-8">
-          {navLinks.map((link, i) => (
-            <Link
-              key={link.href}
-              href={link.href}
+      {/* Mobile fullscreen overlay — rendered as portal-like sibling to avoid scroll offset issues */}
+      {mobileOpen && (
+        <div
+          className="fixed top-0 left-0 right-0 bottom-0 z-[60] bg-navy-900 backdrop-blur-xl md:hidden flex flex-col animate-in fade-in duration-300"
+        >
+          <div className="absolute top-0 right-0 p-4 md:p-6">
+            <button
               onClick={() => setMobileOpen(false)}
-              className="text-2xl font-heading font-light text-white hover:text-gold transition-colors tracking-wide"
-              style={{ animationDelay: `${i * 100}ms` }}
+              className="text-white hover:text-gold transition-colors"
+              aria-label="Menü schließen"
             >
-              {link.label}
-            </Link>
-          ))}
-          <div className="w-12 h-px bg-gold/30 my-2" />
-          <Button
-            asChild
-            className="bg-gold text-navy-900 hover:bg-gold-400 rounded-full px-8 py-3 text-base font-medium"
-          >
-            <Link href="tel:+436647870648" onClick={() => setMobileOpen(false)}>
-              <Phone className="mr-2 h-4 w-4" />
-              Anrufen
-            </Link>
-          </Button>
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+          <div className="flex flex-col items-center justify-center flex-1 gap-8">
+            {navLinks.map((link, i) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="text-2xl font-heading font-light text-white hover:text-gold transition-colors tracking-wide"
+                style={{ animationDelay: `${i * 100}ms` }}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="w-12 h-px bg-gold/30 my-2" />
+            <Button
+              asChild
+              className="bg-gold text-navy-900 hover:bg-gold-400 rounded-full px-8 py-3 text-base font-medium"
+            >
+              <Link href="tel:+436647870648" onClick={() => setMobileOpen(false)}>
+                <Phone className="mr-2 h-4 w-4" />
+                Anrufen
+              </Link>
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   )
 }
